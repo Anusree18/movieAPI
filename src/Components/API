@@ -88,3 +88,10 @@ const Search = async (searchValue) => {
   
     this.setUpdatedMovies(Movies);
   };
+
+
+  <div className="card  width:18rem">
+            <img src={movie.Poster} className="image-container   " />
+            <p>{movie.Title}</p>
+            <p>{movie.Year}</p>
+          </div>

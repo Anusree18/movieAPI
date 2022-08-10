@@ -6,7 +6,6 @@ import MovieListHeader from "./Components/MovieListHeader";
 import SearchBox from "./Components/SearchBox";
 import axios from "axios";
 import MovieLists from "./Components/MovieLists";
-import Nav from "./Components/Navbar";
 
 const App = () => {
   const [movies, setMovies] = useState([]);
@@ -32,7 +31,7 @@ const App = () => {
 
     const response = await fetch(urlMovie);
     const responseJson = await response.json();
-    
+
     console.log(responseJson);
 
     if (responseJson.Search) {
@@ -45,24 +44,25 @@ const App = () => {
   }, [searchValue]);
 
   return (
-    <div className="container-fluid movie-app">
-      <Nav/>
-      <div className="row d-flex mt-4 mb-4">
-        <MovieListHeader heading="Movies" />
+    <div className="container movie-app">
+      <div className="navbar bg-secondary text-white d-flex justify-content-between sticky-top">
+        <h1>Movie Page</h1>
         <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
-      
-      <div className="d-flex  gap-4 ">
-        <MovieList movies={movies} />
-      
+
+      <div className="text-center ">
+        <MovieListHeader heading="Movie Results" />
       </div>
-      <div className="row d-flex align-items-center mt-4 mb-4">
+
+      <div className="row ">
+        <MovieList movies={movies} />
+      </div>
+      <div className="text-center">
         <MovieListHeader heading="Search Results" />
       </div>
-     
-        <div className="d-flex gap-4  ">
-          <MovieLists movies={updatedMovies} />
-        
+
+      <div className="row  ">
+        <MovieLists movies={updatedMovies} />
       </div>
     </div>
   );
